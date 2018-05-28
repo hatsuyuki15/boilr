@@ -8,11 +8,11 @@ import (
 
 	cli "github.com/spf13/cobra"
 
-	"github.com/tmrts/boilr/pkg/boilr"
-	"github.com/tmrts/boilr/pkg/template"
-	"github.com/tmrts/boilr/pkg/util/exit"
-	"github.com/tmrts/boilr/pkg/util/osutil"
-	"github.com/tmrts/boilr/pkg/util/validate"
+	"github.com/jeidee/boilr/pkg/boilr"
+	"github.com/jeidee/boilr/pkg/template"
+	"github.com/jeidee/boilr/pkg/util/exit"
+	"github.com/jeidee/boilr/pkg/util/osutil"
+	"github.com/jeidee/boilr/pkg/util/validate"
 )
 
 // TemplateInRegistry checks whether the given name exists in the template registry.
@@ -33,8 +33,8 @@ var Use = &cli.Command{
 	Short: "Execute a project template in the given directory",
 	Run: func(cmd *cli.Command, args []string) {
 		MustValidateArgs(args, []validate.Argument{
-			{"template-tag", validate.UnixPath},
-			{"target-dir", validate.UnixPath},
+			{"template-tag", validate.Path},
+			{"target-dir", validate.Path},
 		})
 
 		MustValidateTemplateDir()

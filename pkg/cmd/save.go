@@ -7,11 +7,10 @@ import (
 
 	cli "github.com/spf13/cobra"
 
-	"github.com/tmrts/boilr/pkg/boilr"
-	"github.com/tmrts/boilr/pkg/util/exec"
-	"github.com/tmrts/boilr/pkg/util/exit"
-	"github.com/tmrts/boilr/pkg/util/osutil"
-	"github.com/tmrts/boilr/pkg/util/validate"
+	"github.com/jeidee/boilr/pkg/boilr"
+	"github.com/jeidee/boilr/pkg/util/exit"
+	"github.com/jeidee/boilr/pkg/util/osutil"
+	"github.com/jeidee/boilr/pkg/util/validate"
 )
 
 // Save contains the cli-command for saving templates to template registry.
@@ -20,7 +19,7 @@ var Save = &cli.Command{
 	Short: "Save a local project template to template registry",
 	Run: func(c *cli.Command, args []string) {
 		MustValidateArgs(args, []validate.Argument{
-			{"template-path", validate.UnixPath},
+			{"template-path", validate.Path},
 			{"template-tag", validate.AlphanumericExt},
 		})
 
@@ -51,7 +50,10 @@ var Save = &cli.Command{
 			}
 		}
 
-		if _, err := exec.Cmd("cp", "-r", tmplDir, targetDir); err != nil {
+		// if _, err := exec.Cmd("cp", "-r", tmplDir, targetDir); err != nil {
+		// 	exit.Error(err)
+		// }
+		if err := CopyDir(tmplDir, targetDir); err != nil {
 			exit.Error(err)
 		}
 

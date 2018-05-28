@@ -3,9 +3,9 @@ package cmd
 import (
 	"errors"
 
+	"github.com/jeidee/boilr/pkg/util/exit"
+	"github.com/jeidee/boilr/pkg/util/validate"
 	cli "github.com/spf13/cobra"
-	"github.com/tmrts/boilr/pkg/util/exit"
-	"github.com/tmrts/boilr/pkg/util/validate"
 )
 
 var (
@@ -19,7 +19,7 @@ var Validate = &cli.Command{
 	Short: "Validate a local project template",
 	Run: func(_ *cli.Command, args []string) {
 		MustValidateArgs(args, []validate.Argument{
-			{"template-path", validate.UnixPath},
+			{"template-path", validate.Path},
 		})
 
 		templatePath := args[0]

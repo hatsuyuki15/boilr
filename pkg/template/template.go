@@ -9,11 +9,11 @@ import (
 	"regexp"
 	"text/template"
 
-	"github.com/tmrts/boilr/pkg/boilr"
-	"github.com/tmrts/boilr/pkg/prompt"
-	"github.com/tmrts/boilr/pkg/util/osutil"
-	"github.com/tmrts/boilr/pkg/util/stringutil"
-	"github.com/tmrts/boilr/pkg/util/tlog"
+	"github.com/jeidee/boilr/pkg/boilr"
+	"github.com/jeidee/boilr/pkg/prompt"
+	"github.com/jeidee/boilr/pkg/util/osutil"
+	"github.com/jeidee/boilr/pkg/util/stringutil"
+	"github.com/jeidee/boilr/pkg/util/tlog"
 )
 
 // Interface is contains the behavior of boilr templates.
